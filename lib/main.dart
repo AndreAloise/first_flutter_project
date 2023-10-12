@@ -14,14 +14,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Stack(
-        alignment: AlignmentDirectional.center,
+      home: Column(
         children: [
           Container(
-            color: Colors.white,
-          ),
-          Container(
-            color: Colors.black,
+            color: Colors.green,
             width: 300,
             height: 300,
           ),
