@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'exercise_01.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -14,7 +16,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Container(color: Colors.white, child: column1()),
+      //home: Container(color: Colors.white, child: column1()),
+      home: invoqueExercise01(context),
     );
   }
 
@@ -94,5 +97,10 @@ class MyApp extends StatelessWidget {
 
   void buttonFunc1() {
     print('Você apertou o botão!');
+  }
+
+  Widget invoqueExercise01(BuildContext context) {
+    Exercise01 exe01 = const Exercise01();
+    return exe01.build(context);
   }
 }
