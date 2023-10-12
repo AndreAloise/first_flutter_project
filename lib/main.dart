@@ -52,30 +52,27 @@ class MyApp extends StatelessWidget {
               height: 37,
             )
           ],
-        )
-      ],
-    );
-  }
-
-  Row row1() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        Container(
-          color: Colors.red,
-          width: 150,
-          height: 150,
         ),
-        Container(
-          color: Colors.blue,
-          width: 75,
-          height: 75,
-        ),
-        Container(
-          color: Colors.yellow,
-          width: 37,
-          height: 37,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              color: Colors.red,
+              width: 50,
+              height: 50,
+            ),
+            Container(
+              color: Colors.orange,
+              width: 50,
+              height: 50,
+            ),
+            Container(
+              color: Colors.purple,
+              width: 50,
+              height: 50,
+            )
+          ],
         )
       ],
     );
