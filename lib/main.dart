@@ -14,27 +14,70 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            color: Colors.red,
-            width: 150,
-            height: 150,
-          ),
-          Container(
-            color: Colors.blue,
-            width: 75,
-            height: 75,
-          ),
-          Container(
-            color: Colors.yellow,
-            width: 37,
-            height: 37,
-          )
-        ],
-      ),
+      home: column1(),
+    );
+  }
+
+  Column column1() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Stack(
+          alignment: AlignmentDirectional.center,
+          children: [
+            Container(
+              color: Colors.blue,
+              width: 75,
+              height: 75,
+            ),
+            Container(
+              color: Colors.yellow,
+              width: 37,
+              height: 37,
+            )
+          ],
+        ),
+        Stack(
+          alignment: AlignmentDirectional.center,
+          children: [
+            Container(
+              color: Colors.yellow,
+              width: 75,
+              height: 75,
+            ),
+            Container(
+              color: Colors.blue,
+              width: 37,
+              height: 37,
+            )
+          ],
+        )
+      ],
+    );
+  }
+
+  Row row1() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        Container(
+          color: Colors.red,
+          width: 150,
+          height: 150,
+        ),
+        Container(
+          color: Colors.blue,
+          width: 75,
+          height: 75,
+        ),
+        Container(
+          color: Colors.yellow,
+          width: 37,
+          height: 37,
+        )
+      ],
     );
   }
 }
