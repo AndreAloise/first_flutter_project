@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: column1(),
+      home: Container(color: Colors.white, child: column1()),
     );
   }
 
@@ -73,8 +73,26 @@ class MyApp extends StatelessWidget {
               height: 50,
             )
           ],
-        )
+        ),
+        Container(
+          color: Colors.amber,
+          height: 30,
+          width: 300,
+          child: const Text(
+            'Diamante amarelo',
+            style: TextStyle(color: Colors.black, fontSize: 22),
+            textAlign: TextAlign.center,
+          ),
+        ),
+        ElevatedButton(
+          onPressed: buttonFunc1,
+          child: const Text('Aperte o botão!'),
+        ),
       ],
     );
+  }
+
+  void buttonFunc1() {
+    print('Você apertou o botão!');
   }
 }
