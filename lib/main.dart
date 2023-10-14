@@ -1,3 +1,4 @@
+import 'package:first_flutter_project/exercise_02.dart';
 import 'package:first_flutter_project/first_screen_example.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: invoqueFirstScreenExample(context),
+      home: invoqueExercise02(context),
+      //home: invoqueFirstScreenExample(context),
       //home: invoqueExercise01(context),
     );
   }
@@ -30,5 +32,10 @@ class MyApp extends StatelessWidget {
   Widget invoqueExercise01(BuildContext context) {
     Exercise01 exe01 = const Exercise01();
     return exe01.build(context);
+  }
+
+  Widget invoqueExercise02(BuildContext context) {
+    Exercise02 exercise02 = const Exercise02();
+    return exercise02.build(context);
   }
 }
