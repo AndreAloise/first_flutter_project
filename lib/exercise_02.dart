@@ -14,6 +14,7 @@ class Exercise02 extends StatelessWidget {
 
   AppBar _appBar() {
     return AppBar(
+      leading: Container(),
       title: const Text('Tarefas'),
     );
   }
@@ -21,7 +22,7 @@ class Exercise02 extends StatelessWidget {
   ListView _body() {
     return ListView(
       scrollDirection: Axis.vertical,
-      children: [
+      children: const [
         TaskEx02('Aprendendo Flutter'),
         TaskEx02('Aprendendo Dart'),
         TaskEx02('Aprendendo Git'),
@@ -91,7 +92,7 @@ class _TaskEx02State extends State<TaskEx02> {
                       child: Text(widget.taskName,
                           style: const TextStyle(
                               fontSize: 24, overflow: TextOverflow.ellipsis))),
-                  _levelUpTaskButton()
+                  Container(height: 60, width: 60, child: _levelUpTaskButton())
                 ],
               ),
             ),
@@ -122,11 +123,22 @@ class _TaskEx02State extends State<TaskEx02> {
 
   ElevatedButton _levelUpTaskButton() {
     return ElevatedButton(
-        onPressed: () {
-          setState(() {
-            level++;
-          });
-        },
-        child: const Icon(Icons.arrow_drop_up));
+      onPressed: () {
+        setState(() {
+          level++;
+        });
+      },
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: const [
+          Icon(Icons.arrow_drop_up),
+          Text(
+            "Lvl Up",
+            style: TextStyle(fontSize: 10),
+          )
+        ],
+      ),
+    );
   }
 }
