@@ -41,9 +41,16 @@ class Exercise02 extends StatelessWidget {
   }
 }
 
-class TaskEx02 extends StatelessWidget {
+class TaskEx02 extends StatefulWidget {
   final String taskName;
   const TaskEx02(this.taskName, {Key? key}) : super(key: key);
+
+  @override
+  State<TaskEx02> createState() => _TaskEx02State();
+}
+
+class _TaskEx02State extends State<TaskEx02> {
+  int level = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -66,28 +73,60 @@ class TaskEx02 extends StatelessWidget {
           color: Colors.blue,
           height: 140,
         ),
-        Container(
-          color: Colors.white,
-          height: 100,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                color: Colors.black26,
-                width: 72,
-                height: 100,
+        Column(
+          children: [
+            Container(
+              color: Colors.white,
+              height: 100,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    color: Colors.black26,
+                    width: 72,
+                    height: 100,
+                  ),
+                  Container(
+                      width: 200,
+                      child: Text(widget.taskName,
+                          style: const TextStyle(
+                              fontSize: 24, overflow: TextOverflow.ellipsis))),
+                  _levelUpTaskButton()
+                ],
               ),
-              Container(
+            ),
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
                   width: 200,
-                  child: Text(taskName,
-                      style: const TextStyle(
-                          fontSize: 24, overflow: TextOverflow.ellipsis))),
-              ElevatedButton(
-                  onPressed: () {}, child: const Icon(Icons.arrow_drop_up))
-            ],
-          ),
+                  child: LinearProgressIndicator(
+                    color: Colors.white,
+                    value: level / 10,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Nivel: $level',
+                  style: const TextStyle(color: Colors.white, fontSize: 16),
+                ),
+              ),
+            ])
+          ],
         )
       ],
     );
+  }
+
+  ElevatedButton _levelUpTaskButton() {
+    return ElevatedButton(
+        onPressed: () {
+          setState(() {
+            level++;
+          });
+        },
+        child: const Icon(Icons.arrow_drop_up));
   }
 }
