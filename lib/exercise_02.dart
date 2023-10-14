@@ -18,14 +18,18 @@ class Exercise02 extends StatelessWidget {
     );
   }
 
-  Column _body() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  ListView _body() {
+    return ListView(
+      scrollDirection: Axis.vertical,
       children: [
-        TaskEx02('Aorendendo Flutter'),
+        TaskEx02('Aprendendo Flutter'),
         TaskEx02('Aprendendo Dart'),
         TaskEx02('Aprendendo Git'),
         TaskEx02('Aprendendo Java'),
+        TaskEx02('Aprendendo C#'),
+        TaskEx02('Aprendendo Angular'),
+        TaskEx02('Aprendendo Php'),
+        TaskEx02('Aprendendo Ruby'),
       ],
     );
   }
@@ -43,10 +47,16 @@ class TaskEx02 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: _stackChildren(),
-    );
+    return _bodyPadding();
+  }
+
+  Padding _bodyPadding() {
+    return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          color: Colors.white,
+          child: _stackChildren(),
+        ));
   }
 
   Stack _stackChildren() {
@@ -67,7 +77,11 @@ class TaskEx02 extends StatelessWidget {
                 width: 72,
                 height: 100,
               ),
-              Text(taskName),
+              Container(
+                  width: 200,
+                  child: Text(taskName,
+                      style: const TextStyle(
+                          fontSize: 24, overflow: TextOverflow.ellipsis))),
               ElevatedButton(
                   onPressed: () {}, child: const Icon(Icons.arrow_drop_up))
             ],
