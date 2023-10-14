@@ -5,11 +5,7 @@ class Exercise02 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: _appBar(),
-      body: _body(),
-      floatingActionButton: _floatingButton(),
-    );
+    return Scaffold(appBar: _appBar(), body: _body());
   }
 
   AppBar _appBar() {
@@ -32,12 +28,6 @@ class Exercise02 extends StatelessWidget {
         TaskEx02('Aprendendo Php'),
         TaskEx02('Aprendendo Ruby'),
       ],
-    );
-  }
-
-  FloatingActionButton _floatingButton() {
-    return FloatingActionButton(
-      onPressed: () {},
     );
   }
 }
