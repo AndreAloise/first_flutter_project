@@ -52,6 +52,40 @@ class _TaskCardsBodyState extends State<TaskCardsBody> {
     );
   }
 
+  Color? _setProgressBarColorByMastery(int mastery) {
+    Color? color;
+
+    switch (mastery) {
+      case 0:
+        color = Colors.blue;
+        break;
+      case 1:
+        color = Colors.green;
+        break;
+      case 2:
+        color = Colors.orange;
+        break;
+      case 3:
+        color = Colors.red;
+        break;
+      case 4:
+        color = Colors.purple;
+        break;
+      case 5:
+        color = Colors.pink;
+        break;
+      case 6:
+        color = Colors.teal;
+        break;
+      case 7:
+        color = Colors.black;
+        break;
+      default:
+        color = Colors.blue;
+    }
+    return color;
+  }
+
   Container _taskCardContainer() {
     return Container(
       color: null,
@@ -117,51 +151,6 @@ class _TaskCardsBodyState extends State<TaskCardsBody> {
     ]);
   }
 
-  void _setMasteryLevel() {
-    double progressBar = (widget.level / widget.difficulty);
-    double progressBarLevel = progressBar / widget.progressBarMaxDivider;
-    if (progressBarLevel == 1 && widget.masteryLevel < widget.maxMasteryLevel) {
-      setState(() {
-        widget.masteryLevel++;
-        widget.level = 0;
-      });
-    }
-  }
-
-  Color? _setProgressBarColorByMastery(int mastery) {
-    Color? color;
-
-    switch (mastery) {
-      case 0:
-        color = Colors.blue;
-        break;
-      case 1:
-        color = Colors.green;
-        break;
-      case 2:
-        color = Colors.orange;
-        break;
-      case 3:
-        color = Colors.red;
-        break;
-      case 4:
-        color = Colors.purple;
-        break;
-      case 5:
-        color = Colors.pink;
-        break;
-      case 6:
-        color = Colors.teal;
-        break;
-      case 7:
-        color = Colors.black;
-        break;
-      default:
-        color = Colors.blue;
-    }
-    return color;
-  }
-
   ElevatedButton _levelUpTaskButton() {
     return ElevatedButton(
       onPressed: () {
@@ -183,5 +172,16 @@ class _TaskCardsBodyState extends State<TaskCardsBody> {
         ],
       ),
     );
+  }
+
+  void _setMasteryLevel() {
+    double progressBar = (widget.level / widget.difficulty);
+    double progressBarLevel = progressBar / widget.progressBarMaxDivider;
+    if (progressBarLevel == 1 && widget.masteryLevel < widget.maxMasteryLevel) {
+      setState(() {
+        widget.masteryLevel++;
+        widget.level = 0;
+      });
+    }
   }
 }
