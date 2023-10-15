@@ -1,14 +1,14 @@
 import 'package:first_flutter_project/task_cards/task_cards_difficulty.dart';
 import 'package:flutter/material.dart';
 
-class TaskCards extends StatefulWidget {
-  const TaskCards({Key? key}) : super(key: key);
+class TaskCardsPage extends StatefulWidget {
+  const TaskCardsPage({Key? key}) : super(key: key);
 
   @override
-  State<TaskCards> createState() => _TaskCardsState();
+  State<TaskCardsPage> createState() => _TaskCardsPageState();
 }
 
-class _TaskCardsState extends State<TaskCards> {
+class _TaskCardsPageState extends State<TaskCardsPage> {
   bool shouldApplyOpacity = true;
 
   @override

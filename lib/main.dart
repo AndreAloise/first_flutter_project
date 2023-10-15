@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
   }
 
   Widget invoqueTaskCards() {
-    TaskCards taskCards = const TaskCards();
+    TaskCardsPage taskCards = const TaskCardsPage();
     return taskCards;
   }
 
