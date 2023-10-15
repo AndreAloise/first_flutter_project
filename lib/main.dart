@@ -1,6 +1,6 @@
 import 'package:first_flutter_project/exercises/exercise_01.dart';
 import 'package:first_flutter_project/exercises/exercise_03.dart';
-import 'package:first_flutter_project/task_cards.dart';
+import 'package:first_flutter_project/task_cards/task_cards.dart';
 import 'package:first_flutter_project/exercises/first_screen_example.dart';
 import 'package:flutter/material.dart';
 
