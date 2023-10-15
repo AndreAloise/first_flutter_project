@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 class TaskCardsBody extends StatefulWidget {
   final String taskName;
-  final String photoUrl;
+  final String photoPath;
   final int difficulty;
   int level = 0;
 
-  TaskCardsBody(this.taskName, this.photoUrl, this.difficulty, {Key? key})
+  TaskCardsBody(this.taskName, this.photoPath, this.difficulty, {Key? key})
       : super(key: key);
 
   @override
@@ -66,8 +66,8 @@ class _TaskCardsBodyState extends State<TaskCardsBody> {
                   color: Colors.black26),
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(4),
-                  child: Image.network(
-                    widget.photoUrl,
+                  child: Image.asset(
+                    widget.photoPath,
                     fit: BoxFit.cover,
                   ))),
           Column(
