@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Exercise02 extends StatefulWidget {
-  const Exercise02({Key? key}) : super(key: key);
+class TaskCards extends StatefulWidget {
+  const TaskCards({Key? key}) : super(key: key);
 
   @override
-  State<Exercise02> createState() => _Exercise02State();
+  State<TaskCards> createState() => _TaskCardsState();
 }
 
-class _Exercise02State extends State<Exercise02> {
+class _TaskCardsState extends State<TaskCards> {
   bool shouldApplyOpacity = true;
 
   @override

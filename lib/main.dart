@@ -1,4 +1,4 @@
-import 'package:first_flutter_project/exercise_02.dart';
+import 'package:first_flutter_project/task_cards.dart';
 import 'package:first_flutter_project/first_screen_example.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       //home: invoqueExercise03(context),
-      home: invoqueExercise02(context),
+      home: invoqueTaskCards(),
       //home: invoqueFirstScreenExample(context),
       //home: invoqueExercise01(context),
     );
@@ -36,9 +36,9 @@ class MyApp extends StatelessWidget {
     return exe01.build(context);
   }
 
-  Widget invoqueExercise02(BuildContext context) {
-    Exercise02 exercise02 = const Exercise02();
-    return exercise02;
+  Widget invoqueTaskCards() {
+    TaskCards taskCards = const TaskCards();
+    return taskCards;
   }
 
   Widget invoqueExercise03(BuildContext context) {
