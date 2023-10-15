@@ -72,6 +72,9 @@ class _TaskCardsPageState extends State<TaskCardsPage> {
             5),
         TaskCardsBody('Aprendendo Ruby',
             'https://cdn-icons-png.flaticon.com/512/919/919842.png', 3),
+        const SizedBox(
+          height: 80,
+        )
       ],
     );
   }
