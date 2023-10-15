@@ -69,20 +69,29 @@ class FlagEx03 extends StatelessWidget {
       children: [
         Row(
           children: [
-            _flagContainer(firstColor),
-            _flagContainer(secondColor),
-            _flagContainer(thirdColor),
+            _flagContainer(firstColor, false),
+            _flagContainer(secondColor, true),
+            _flagContainer(thirdColor, false),
           ],
         )
       ],
     );
   }
 
-  Container _flagContainer(Color color) {
+  Container _flagContainer(Color color, bool shouldHasImage) {
     return Container(
-      color: color,
+      color: null,
       height: 140,
       width: 100,
+      decoration: BoxDecoration(
+          border: Border.all(width: 3),
+          borderRadius: BorderRadius.circular(20),
+          color: color),
+      child: shouldHasImage
+          ? Image.network(
+              'https://www.ziliongames.com.br/banco_imagens/produtos/g/ronaldinho-soccer-super-nintendo-seminovo1K11.png',
+            )
+          : null,
     );
   }
 }
