@@ -22,22 +22,34 @@ class Exercise02 extends StatelessWidget {
     return ListView(
       scrollDirection: Axis.vertical,
       children: const [
-        TaskEx02('Aprendendo Flutter',
-            'https://static-00.iconduck.com/assets.00/flutter-icon-1651x2048-ojswpayr.png'),
-        TaskEx02('Aprendendo Dart',
-            'https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/dart-programming-language-icon.png'),
+        TaskEx02(
+            'Aprendendo Flutter',
+            'https://static-00.iconduck.com/assets.00/flutter-icon-1651x2048-ojswpayr.png',
+            3),
+        TaskEx02(
+            'Aprendendo Dart',
+            'https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/dart-programming-language-icon.png',
+            2),
         TaskEx02('Aprendendo Git',
-            'https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png'),
-        TaskEx02('Aprendendo Java',
-            'https://static-00.iconduck.com/assets.00/java-original-icon-756x1024-j3tx11wk.png'),
-        TaskEx02('Aprendendo C#',
-            'https://static-00.iconduck.com/assets.00/c-sharp-c-icon-1822x2048-wuf3ijab.png'),
-        TaskEx02('Aprendendo Angular',
-            'https://static-00.iconduck.com/assets.00/file-type-angular-icon-1907x2048-tobdkjt1.png'),
-        TaskEx02('Aprendendo Php',
-            'https://cdn.icon-icons.com/icons2/2415/PNG/512/php_plain_logo_icon_146397.png'),
+            'https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png', 2),
+        TaskEx02(
+            'Aprendendo Java',
+            'https://static-00.iconduck.com/assets.00/java-original-icon-756x1024-j3tx11wk.png',
+            4),
+        TaskEx02(
+            'Aprendendo C#',
+            'https://static-00.iconduck.com/assets.00/c-sharp-c-icon-1822x2048-wuf3ijab.png',
+            4),
+        TaskEx02(
+            'Aprendendo Angular',
+            'https://static-00.iconduck.com/assets.00/file-type-angular-icon-1907x2048-tobdkjt1.png',
+            3),
+        TaskEx02(
+            'Aprendendo Php',
+            'https://cdn.icon-icons.com/icons2/2415/PNG/512/php_plain_logo_icon_146397.png',
+            5),
         TaskEx02('Aprendendo Ruby',
-            'https://cdn-icons-png.flaticon.com/512/919/919842.png'),
+            'https://cdn-icons-png.flaticon.com/512/919/919842.png', 3),
       ],
     );
   }
@@ -46,7 +58,10 @@ class Exercise02 extends StatelessWidget {
 class TaskEx02 extends StatefulWidget {
   final String taskName;
   final String photoUrl;
-  const TaskEx02(this.taskName, this.photoUrl, {Key? key}) : super(key: key);
+  final int difficulty;
+
+  const TaskEx02(this.taskName, this.photoUrl, this.difficulty, {Key? key})
+      : super(key: key);
 
   @override
   State<TaskEx02> createState() => _TaskEx02State();
@@ -104,11 +119,31 @@ class _TaskEx02State extends State<TaskEx02> {
                                   overflow: TextOverflow.ellipsis))),
                       Row(
                         children: [
-                          Icon(Icons.star, size: 15, color: Colors.blue),
-                          Icon(Icons.star, size: 15, color: Colors.blue),
-                          Icon(Icons.star, size: 15, color: Colors.blue),
-                          Icon(Icons.star, size: 15, color: Colors.blue[100]),
-                          Icon(Icons.star, size: 15, color: Colors.blue[100]),
+                          Icon(Icons.star,
+                              size: 15,
+                              color: (widget.difficulty >= 1)
+                                  ? Colors.blue
+                                  : Colors.blue[100]),
+                          Icon(Icons.star,
+                              size: 15,
+                              color: (widget.difficulty >= 2)
+                                  ? Colors.blue
+                                  : Colors.blue[100]),
+                          Icon(Icons.star,
+                              size: 15,
+                              color: (widget.difficulty >= 3)
+                                  ? Colors.blue
+                                  : Colors.blue[100]),
+                          Icon(Icons.star,
+                              size: 15,
+                              color: (widget.difficulty >= 4)
+                                  ? Colors.blue
+                                  : Colors.blue[100]),
+                          Icon(Icons.star,
+                              size: 15,
+                              color: (widget.difficulty >= 5)
+                                  ? Colors.blue
+                                  : Colors.blue[100]),
                         ],
                       ),
                     ],
@@ -124,7 +159,9 @@ class _TaskEx02State extends State<TaskEx02> {
                   width: 200,
                   child: LinearProgressIndicator(
                     color: Colors.white,
-                    value: level / 10,
+                    value: (widget.difficulty > 0)
+                        ? (level / widget.difficulty) / 10
+                        : 1,
                   ),
                 ),
               ),
