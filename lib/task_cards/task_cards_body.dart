@@ -6,6 +6,9 @@ class TaskCardsBody extends StatefulWidget {
   final String photoPath;
   final int difficulty;
   int level = 0;
+  int masteryLevel = 0;
+  final int maxMasteryLevel = 7;
+  final int progressBarMaxDivider = 10;
 
   TaskCardsBody(this.taskName, this.photoPath, this.difficulty, {Key? key})
       : super(key: key);
@@ -36,7 +39,8 @@ class _TaskCardsBodyState extends State<TaskCardsBody> {
           color: null,
           height: 140,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(4), color: Colors.blue),
+              borderRadius: BorderRadius.circular(4),
+              color: _setProgressBarColorByMastery(widget.masteryLevel)),
         ),
         Column(
           children: [
@@ -97,7 +101,8 @@ class _TaskCardsBodyState extends State<TaskCardsBody> {
           child: LinearProgressIndicator(
             color: Colors.white,
             value: (widget.difficulty > 0)
-                ? (widget.level / widget.difficulty) / 10
+                ? (widget.level / widget.difficulty) /
+                    widget.progressBarMaxDivider
                 : 1,
           ),
         ),
@@ -112,12 +117,59 @@ class _TaskCardsBodyState extends State<TaskCardsBody> {
     ]);
   }
 
+  void _setMasteryLevel() {
+    double progressBar = (widget.level / widget.difficulty);
+    double progressBarLevel = progressBar / widget.progressBarMaxDivider;
+    if (progressBarLevel == 1 && widget.masteryLevel < widget.maxMasteryLevel) {
+      setState(() {
+        widget.masteryLevel++;
+        widget.level = 0;
+      });
+    }
+  }
+
+  Color? _setProgressBarColorByMastery(int mastery) {
+    Color? color;
+
+    switch (mastery) {
+      case 0:
+        color = Colors.blue;
+        break;
+      case 1:
+        color = Colors.green;
+        break;
+      case 2:
+        color = Colors.orange;
+        break;
+      case 3:
+        color = Colors.red;
+        break;
+      case 4:
+        color = Colors.purple;
+        break;
+      case 5:
+        color = Colors.pink;
+        break;
+      case 6:
+        color = Colors.teal;
+        break;
+      case 7:
+        color = Colors.black;
+        break;
+      default:
+        color = Colors.blue;
+    }
+    return color;
+  }
+
   ElevatedButton _levelUpTaskButton() {
     return ElevatedButton(
       onPressed: () {
         setState(() {
           widget.level++;
         });
+
+        _setMasteryLevel();
       },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
