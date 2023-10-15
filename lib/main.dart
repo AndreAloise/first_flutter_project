@@ -1,9 +1,8 @@
+import 'package:first_flutter_project/exercises/exercise_01.dart';
+import 'package:first_flutter_project/exercises/exercise_03.dart';
 import 'package:first_flutter_project/task_cards.dart';
-import 'package:first_flutter_project/first_screen_example.dart';
+import 'package:first_flutter_project/exercises/first_screen_example.dart';
 import 'package:flutter/material.dart';
-
-import 'exercise_01.dart';
-import 'exercise_03.dart';
 
 void main() {
   runApp(const MyApp());
