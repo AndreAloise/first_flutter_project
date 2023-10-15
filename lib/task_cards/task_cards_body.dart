@@ -74,7 +74,7 @@ class _TaskCardsBodyState extends State<TaskCardsBody> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
+              SizedBox(
                   width: 200,
                   child: Text(widget.taskName,
                       style: const TextStyle(
@@ -82,7 +82,7 @@ class _TaskCardsBodyState extends State<TaskCardsBody> {
               TaskCardsDifficulty(widget.difficulty),
             ],
           ),
-          Container(height: 60, width: 60, child: _levelUpTaskButton())
+          SizedBox(height: 60, width: 60, child: _levelUpTaskButton())
         ],
       ),
     );
@@ -92,7 +92,7 @@ class _TaskCardsBodyState extends State<TaskCardsBody> {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
       Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Container(
+        child: SizedBox(
           width: 200,
           child: LinearProgressIndicator(
             color: Colors.white,

@@ -78,14 +78,10 @@ class FirstScreenExample extends StatelessWidget {
           ),
         ),
         ElevatedButton(
-          onPressed: buttonFunc1,
+          onPressed: () {},
           child: const Text('Aperte o botão!'),
         ),
       ],
     );
-  }
-
-  void buttonFunc1() {
-    print('Você apertou o botão!');
   }
 }
