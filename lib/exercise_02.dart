@@ -10,7 +10,10 @@ class Exercise02 extends StatelessWidget {
 
   AppBar _appBar() {
     return AppBar(
-      leading: Container(),
+      leading: Image.network(
+        'https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large',
+        fit: BoxFit.cover,
+      ),
       title: const Text('Tarefas'),
     );
   }
@@ -19,14 +22,22 @@ class Exercise02 extends StatelessWidget {
     return ListView(
       scrollDirection: Axis.vertical,
       children: const [
-        TaskEx02('Aprendendo Flutter'),
-        TaskEx02('Aprendendo Dart'),
-        TaskEx02('Aprendendo Git'),
-        TaskEx02('Aprendendo Java'),
-        TaskEx02('Aprendendo C#'),
-        TaskEx02('Aprendendo Angular'),
-        TaskEx02('Aprendendo Php'),
-        TaskEx02('Aprendendo Ruby'),
+        TaskEx02('Aprendendo Flutter',
+            'https://static-00.iconduck.com/assets.00/flutter-icon-1651x2048-ojswpayr.png'),
+        TaskEx02('Aprendendo Dart',
+            'https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/dart-programming-language-icon.png'),
+        TaskEx02('Aprendendo Git',
+            'https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png'),
+        TaskEx02('Aprendendo Java',
+            'https://static-00.iconduck.com/assets.00/java-original-icon-756x1024-j3tx11wk.png'),
+        TaskEx02('Aprendendo C#',
+            'https://static-00.iconduck.com/assets.00/c-sharp-c-icon-1822x2048-wuf3ijab.png'),
+        TaskEx02('Aprendendo Angular',
+            'https://static-00.iconduck.com/assets.00/file-type-angular-icon-1907x2048-tobdkjt1.png'),
+        TaskEx02('Aprendendo Php',
+            'https://cdn.icon-icons.com/icons2/2415/PNG/512/php_plain_logo_icon_146397.png'),
+        TaskEx02('Aprendendo Ruby',
+            'https://cdn-icons-png.flaticon.com/512/919/919842.png'),
       ],
     );
   }
@@ -34,7 +45,8 @@ class Exercise02 extends StatelessWidget {
 
 class TaskEx02 extends StatefulWidget {
   final String taskName;
-  const TaskEx02(this.taskName, {Key? key}) : super(key: key);
+  final String photoUrl;
+  const TaskEx02(this.taskName, this.photoUrl, {Key? key}) : super(key: key);
 
   @override
   State<TaskEx02> createState() => _TaskEx02State();
@@ -73,10 +85,13 @@ class _TaskEx02State extends State<TaskEx02> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    color: Colors.black26,
-                    width: 72,
-                    height: 100,
-                  ),
+                      color: Colors.black26,
+                      width: 72,
+                      height: 100,
+                      child: Image.network(
+                        widget.photoUrl,
+                        fit: BoxFit.cover,
+                      )),
                   Container(
                       width: 200,
                       child: Text(widget.taskName,
