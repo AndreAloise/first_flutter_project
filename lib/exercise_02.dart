@@ -88,8 +88,10 @@ class _TaskEx02State extends State<TaskEx02> {
     return Stack(
       children: [
         Container(
-          color: Colors.blue,
+          color: null,
           height: 140,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(4), color: Colors.blue),
         ),
         Column(
           children: [
@@ -103,19 +105,26 @@ class _TaskEx02State extends State<TaskEx02> {
 
   Container _taskCardContainer() {
     return Container(
-      color: Colors.white,
+      color: null,
       height: 100,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(4), color: Colors.white),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-              color: Colors.black26,
+              color: null,
               width: 72,
               height: 100,
-              child: Image.network(
-                widget.photoUrl,
-                fit: BoxFit.cover,
-              )),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(4),
+                  color: Colors.black26),
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(4),
+                  child: Image.network(
+                    widget.photoUrl,
+                    fit: BoxFit.cover,
+                  ))),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
