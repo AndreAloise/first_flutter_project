@@ -222,7 +222,7 @@ class _TaskEx02State extends State<TaskEx02> {
       Padding(
         padding: const EdgeInsets.all(8.0),
         child: Text(
-          'Nivel: $level',
+          'Level: $level',
           style: const TextStyle(color: Colors.white, fontSize: 16),
         ),
       ),
