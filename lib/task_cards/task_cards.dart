@@ -1,3 +1,4 @@
+import 'package:first_flutter_project/task_cards/task_cards_difficulty.dart';
 import 'package:flutter/material.dart';
 
 class TaskCards extends StatefulWidget {
@@ -169,35 +170,7 @@ class _TaskEx02State extends State<TaskEx02> {
                   child: Text(widget.taskName,
                       style: const TextStyle(
                           fontSize: 24, overflow: TextOverflow.ellipsis))),
-              Row(
-                children: [
-                  Icon(Icons.star,
-                      size: 15,
-                      color: (widget.difficulty >= 1)
-                          ? Colors.blue
-                          : Colors.blue[100]),
-                  Icon(Icons.star,
-                      size: 15,
-                      color: (widget.difficulty >= 2)
-                          ? Colors.blue
-                          : Colors.blue[100]),
-                  Icon(Icons.star,
-                      size: 15,
-                      color: (widget.difficulty >= 3)
-                          ? Colors.blue
-                          : Colors.blue[100]),
-                  Icon(Icons.star,
-                      size: 15,
-                      color: (widget.difficulty >= 4)
-                          ? Colors.blue
-                          : Colors.blue[100]),
-                  Icon(Icons.star,
-                      size: 15,
-                      color: (widget.difficulty >= 5)
-                          ? Colors.blue
-                          : Colors.blue[100]),
-                ],
-              ),
+              TaskCardsDifficulty(widget.difficulty),
             ],
           ),
           Container(height: 60, width: 60, child: _levelUpTaskButton())
