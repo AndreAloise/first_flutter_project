@@ -43,7 +43,7 @@ class _TaskCardsPageState extends State<TaskCardsPage> {
   ListView _body() {
     return ListView(
       scrollDirection: Axis.vertical,
-      children: const [
+      children: [
         TaskCardsBody(
             'Aprendendo Flutter',
             'https://static-00.iconduck.com/assets.00/flutter-icon-1651x2048-ojswpayr.png',

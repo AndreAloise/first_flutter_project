@@ -5,8 +5,9 @@ class TaskCardsBody extends StatefulWidget {
   final String taskName;
   final String photoUrl;
   final int difficulty;
+  int level = 0;
 
-  const TaskCardsBody(this.taskName, this.photoUrl, this.difficulty, {Key? key})
+  TaskCardsBody(this.taskName, this.photoUrl, this.difficulty, {Key? key})
       : super(key: key);
 
   @override
@@ -14,8 +15,6 @@ class TaskCardsBody extends StatefulWidget {
 }
 
 class _TaskCardsBodyState extends State<TaskCardsBody> {
-  int level = 0;
-
   @override
   Widget build(BuildContext context) {
     return _bodyPadding();
@@ -97,15 +96,16 @@ class _TaskCardsBodyState extends State<TaskCardsBody> {
           width: 200,
           child: LinearProgressIndicator(
             color: Colors.white,
-            value:
-                (widget.difficulty > 0) ? (level / widget.difficulty) / 10 : 1,
+            value: (widget.difficulty > 0)
+                ? (widget.level / widget.difficulty) / 10
+                : 1,
           ),
         ),
       ),
       Padding(
         padding: const EdgeInsets.all(8.0),
         child: Text(
-          'Level: $level',
+          'Level: ${widget.level}',
           style: const TextStyle(color: Colors.white, fontSize: 16),
         ),
       ),
@@ -116,7 +116,7 @@ class _TaskCardsBodyState extends State<TaskCardsBody> {
     return ElevatedButton(
       onPressed: () {
         setState(() {
-          level++;
+          widget.level++;
         });
       },
       child: Column(
