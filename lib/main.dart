@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
 
   Widget invoqueExercise02(BuildContext context) {
     Exercise02 exercise02 = const Exercise02();
-    return exercise02.build(context);
+    return exercise02;
   }
 
   Widget invoqueExercise03(BuildContext context) {

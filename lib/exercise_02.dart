@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
 
-class Exercise02 extends StatelessWidget {
+class Exercise02 extends StatefulWidget {
   const Exercise02({Key? key}) : super(key: key);
 
   @override
+  State<Exercise02> createState() => _Exercise02State();
+}
+
+class _Exercise02State extends State<Exercise02> {
+  bool shouldApplyOpacity = true;
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: _appBar(), body: _body());
+    return Scaffold(
+      appBar: _appBar(),
+      body: _bodyWithOpacity(),
+      floatingActionButton: _floatingButton(),
+    );
   }
 
   AppBar _appBar() {
@@ -15,6 +26,16 @@ class Exercise02 extends StatelessWidget {
         fit: BoxFit.cover,
       ),
       title: const Text('Tarefas'),
+    );
+  }
+
+  AnimatedOpacity _bodyWithOpacity() {
+    return AnimatedOpacity(
+      opacity: shouldApplyOpacity ? 1 : 0,
+      duration: const Duration(
+        seconds: 3,
+      ),
+      child: _body(),
     );
   }
 
@@ -52,6 +73,20 @@ class Exercise02 extends StatelessWidget {
             'https://cdn-icons-png.flaticon.com/512/919/919842.png', 3),
       ],
     );
+  }
+
+  FloatingActionButton _floatingButton() {
+    return FloatingActionButton(
+        backgroundColor: const Color.fromARGB(255, 57, 29, 100),
+        onPressed: () {
+          setState(() {
+            shouldApplyOpacity = !shouldApplyOpacity;
+          });
+        },
+        child: Icon(
+          color: Colors.white,
+          shouldApplyOpacity ? Icons.visibility_off : Icons.visibility,
+        ));
   }
 }
 
