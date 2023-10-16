@@ -27,8 +27,7 @@ class TaskCardsInherited extends InheritedWidget {
   }
 
   @override
-  bool updateShouldNotify(covariant InheritedWidget oldWidget) {
-    // TODO: implement updateShouldNotify
-    throw UnimplementedError();
+  bool updateShouldNotify(TaskCardsInherited oldWidget) {
+    return oldWidget.taskCardsList.length != taskCardsList.length;
   }
 }
