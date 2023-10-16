@@ -147,8 +147,10 @@ class _FormScreenPage extends State<FormScreenPage> {
     return ElevatedButton(
         onPressed: () {
           if (_formKey.currentState!.validate()) {
-            ScaffoldMessenger.of(context)
-                .showSnackBar(const SnackBar(content: Text('Saving Task')));
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                behavior: SnackBarBehavior.floating,
+                elevation: 150.0,
+                content: Text('Saving Task')));
           }
         },
         child: const Text('Add!'));
