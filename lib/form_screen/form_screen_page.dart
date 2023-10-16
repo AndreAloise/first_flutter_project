@@ -137,7 +137,7 @@ class _FormScreenPage extends State<FormScreenPage> {
               (BuildContext context, Object exception, StackTrace? stackTrace) {
             return Image.asset('assets/images/no-photo-icon.png');
           },
-          fit: BoxFit.cover,
+          fit: BoxFit.contain,
         ),
       ),
     );
@@ -146,7 +146,10 @@ class _FormScreenPage extends State<FormScreenPage> {
   ElevatedButton _addTaskButton() {
     return ElevatedButton(
         onPressed: () {
-          if (_formKey.currentState!.validate()) {}
+          if (_formKey.currentState!.validate()) {
+            ScaffoldMessenger.of(context)
+                .showSnackBar(const SnackBar(content: Text('Saving Task')));
+          }
         },
         child: const Text('Add!'));
   }
