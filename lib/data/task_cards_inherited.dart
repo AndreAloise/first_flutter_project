@@ -26,7 +26,7 @@ class TaskCardsInherited extends InheritedWidget {
     return newTask;
   }
 
-  static TaskCardsInherited of(BuildContext context) {
+  static TaskCardsInherited insideOf(BuildContext context) {
     final TaskCardsInherited? result =
         context.dependOnInheritedWidgetOfExactType<TaskCardsInherited>();
     return result!;

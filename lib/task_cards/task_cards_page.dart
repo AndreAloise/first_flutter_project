@@ -52,7 +52,7 @@ class _TaskCardsPageState extends State<TaskCardsPage> {
     return ListView(
       scrollDirection: Axis.vertical,
       children: [
-        Column(children: TaskCardsInherited.of(context).taskCardsList),
+        Column(children: TaskCardsInherited.insideOf(context).taskCardsList),
         const SizedBox(
           height: 80,
         )
