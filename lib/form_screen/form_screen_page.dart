@@ -56,6 +56,9 @@ class _FormScreenPage extends State<FormScreenPage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  onChanged: (text) {
+                    setState(() {});
+                  },
                   controller: imageController,
                   textAlign: TextAlign.center,
                   decoration: const InputDecoration(
@@ -63,6 +66,22 @@ class _FormScreenPage extends State<FormScreenPage> {
                     hintText: 'Image',
                     fillColor: Colors.white70,
                     filled: true,
+                  ),
+                ),
+              ),
+              Container(
+                width: 100,
+                height: 72,
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  border: Border.all(width: 2, color: Colors.blue),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.network(
+                    imageController.text,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
