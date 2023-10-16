@@ -1,3 +1,4 @@
+import 'package:first_flutter_project/form_screen/form_screen_page.dart';
 import 'package:first_flutter_project/task_cards/task_cards_body.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +22,7 @@ class _TaskCardsPageState extends State<TaskCardsPage> {
           child:
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             _floatingButtonOpacity(),
-            _floatingButtonOpacity(),
+            _floatingButtonAdd(),
           ])),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
@@ -70,6 +71,7 @@ class _TaskCardsPageState extends State<TaskCardsPage> {
 
   FloatingActionButton _floatingButtonOpacity() {
     return FloatingActionButton(
+        heroTag: 'opacityButton',
         backgroundColor: const Color.fromARGB(255, 57, 29, 100),
         onPressed: () {
           setState(() {
@@ -80,5 +82,17 @@ class _TaskCardsPageState extends State<TaskCardsPage> {
           color: Colors.white,
           shouldApplyOpacity ? Icons.visibility_off : Icons.visibility,
         ));
+  }
+
+  FloatingActionButton _floatingButtonAdd() {
+    return FloatingActionButton(
+      heroTag: 'addTaskButton',
+      backgroundColor: Colors.blue,
+      onPressed: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const FormScreenPage()));
+      },
+      child: const Icon(Icons.add),
+    );
   }
 }
