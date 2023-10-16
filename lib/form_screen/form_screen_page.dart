@@ -151,6 +151,7 @@ class _FormScreenPage extends State<FormScreenPage> {
                 behavior: SnackBarBehavior.floating,
                 elevation: 150.0,
                 content: Text('Saving Task')));
+            Navigator.pop(context);
           }
         },
         child: const Text('Add!'));
