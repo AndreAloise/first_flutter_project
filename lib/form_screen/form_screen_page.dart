@@ -12,6 +12,24 @@ class _FormScreenPage extends State<FormScreenPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(title: const Text('Nova Tarefa')),
+      body: Center(
+        child: Container(
+          color: null,
+          height: 650,
+          width: 375,
+          decoration: BoxDecoration(
+              color: Colors.black12,
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(width: 3)),
+          child: Column(
+            children: [
+              TextFormField(),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
