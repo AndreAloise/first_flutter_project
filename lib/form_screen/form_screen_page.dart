@@ -122,8 +122,8 @@ class _FormScreenPage extends State<FormScreenPage> {
 
   Container _taskIconPreview() {
     return Container(
-      width: 100,
-      height: 72,
+      width: 72,
+      height: 100,
       decoration: BoxDecoration(
         color: Colors.blue,
         border: Border.all(width: 2, color: Colors.blue),
