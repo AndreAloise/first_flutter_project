@@ -105,10 +105,11 @@ class _TaskCardState extends State<TaskCard> {
                   color: Colors.black26),
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(4),
-                  child: Image.asset(
-                    widget.photoPath,
-                    fit: BoxFit.cover,
-                  ))),
+                  child: Image.asset(widget.photoPath, fit: BoxFit.cover,
+                      errorBuilder: (BuildContext context, Object exception,
+                          StackTrace? stackTrace) {
+                    return Image.asset('assets/images/no-photo-icon.png');
+                  }))),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
