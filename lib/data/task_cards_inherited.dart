@@ -17,18 +17,13 @@ class TaskCardsInherited extends InheritedWidget {
   ];
 
   void addNewTask(String taskName, String photoPath, int difficulty) {
-    TaskCard newCard = _createNewTask(taskName, photoPath, difficulty);
-    taskCardsList.add(newCard);
-  }
-
-  TaskCard _createNewTask(String taskName, String photoPath, int difficulty) {
-    TaskCard newTask = TaskCard(taskName, photoPath, difficulty);
-    return newTask;
+    taskCardsList.add(TaskCard(taskName, photoPath, difficulty));
   }
 
   static TaskCardsInherited insideOf(BuildContext context) {
     final TaskCardsInherited? result =
         context.dependOnInheritedWidgetOfExactType<TaskCardsInherited>();
+    assert(result != null, 'No TaskInherited found in context');
     return result!;
   }
 
