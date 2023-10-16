@@ -16,14 +16,8 @@ class _TaskCardsPageState extends State<TaskCardsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _appBar(),
-      body: _bodyWithOpacity(),
-      floatingActionButton: Container(
-          padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 10.0),
-          child:
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            _floatingButtonOpacity(),
-            _floatingButtonAdd(),
-          ])),
+      body: _bodyWithOpacity(context),
+      floatingActionButton: _floatingButtonList(context),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
@@ -38,26 +32,25 @@ class _TaskCardsPageState extends State<TaskCardsPage> {
     );
   }
 
-  AnimatedOpacity _bodyWithOpacity() {
+  AnimatedOpacity _bodyWithOpacity(BuildContext context) {
     return AnimatedOpacity(
       opacity: shouldApplyOpacity ? 1 : 0,
       duration: const Duration(
         seconds: 3,
       ),
-      child: _body(),
+      child: ListView(
+          children: TaskCardsInherited.insideOf(context).taskCardsList),
     );
   }
 
-  ListView _body() {
-    return ListView(
-      scrollDirection: Axis.vertical,
-      children: [
-        Column(children: TaskCardsInherited.insideOf(context).taskCardsList),
-        const SizedBox(
-          height: 80,
-        )
-      ],
-    );
+  Container _floatingButtonList(BuildContext context) {
+    return Container(
+        padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 10.0),
+        child:
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          _floatingButtonOpacity(),
+          _floatingButtonAddTask(context),
+        ]));
   }
 
   FloatingActionButton _floatingButtonOpacity() {
@@ -75,13 +68,15 @@ class _TaskCardsPageState extends State<TaskCardsPage> {
         ));
   }
 
-  FloatingActionButton _floatingButtonAdd() {
+  FloatingActionButton _floatingButtonAddTask(BuildContext context) {
     return FloatingActionButton(
       heroTag: 'addTaskButton',
       backgroundColor: Colors.blue,
       onPressed: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const FormScreenPage()));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (contextNew) => FormScreenPage(taskContext: context)));
       },
       child: const Icon(Icons.add),
     );
