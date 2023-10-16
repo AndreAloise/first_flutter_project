@@ -39,6 +39,7 @@ class _TaskCardsPageState extends State<TaskCardsPage> {
         seconds: 3,
       ),
       child: ListView(
+          padding: const EdgeInsets.only(bottom: 80),
           children: TaskCardsInherited.insideOf(context).taskCardsList),
     );
   }
