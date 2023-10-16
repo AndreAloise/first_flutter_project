@@ -105,11 +105,17 @@ class _TaskCardState extends State<TaskCard> {
                   color: Colors.black26),
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(4),
-                  child: Image.asset(widget.photoPath, fit: BoxFit.cover,
-                      errorBuilder: (BuildContext context, Object exception,
-                          StackTrace? stackTrace) {
-                    return Image.asset('assets/images/no-photo-icon.png');
-                  }))),
+                  child: _isPhotoPathNetwork(widget.photoPath)
+                      ? Image.network(widget.photoPath, fit: BoxFit.cover,
+                          errorBuilder: (BuildContext context, Object exception,
+                              StackTrace? stackTrace) {
+                          return Image.asset('assets/images/no-photo-icon.png');
+                        })
+                      : Image.asset(widget.photoPath, fit: BoxFit.cover,
+                          errorBuilder: (BuildContext context, Object exception,
+                              StackTrace? stackTrace) {
+                          return Image.asset('assets/images/no-photo-icon.png');
+                        }))),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -184,5 +190,9 @@ class _TaskCardState extends State<TaskCard> {
         level = 0;
       });
     }
+  }
+
+  bool _isPhotoPathNetwork(String photoPath) {
+    return photoPath.contains('http');
   }
 }
