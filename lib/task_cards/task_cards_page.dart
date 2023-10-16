@@ -1,5 +1,5 @@
+import 'package:first_flutter_project/data/task_cards_inherited.dart';
 import 'package:first_flutter_project/form_screen/form_screen_page.dart';
-import 'package:first_flutter_project/task_cards/task_card.dart';
 import 'package:flutter/material.dart';
 
 class TaskCardsPage extends StatefulWidget {
@@ -52,14 +52,7 @@ class _TaskCardsPageState extends State<TaskCardsPage> {
     return ListView(
       scrollDirection: Axis.vertical,
       children: [
-        TaskCard('Aprendendo Flutter', 'assets/images/flutter-icon.png', 3),
-        TaskCard('Aprendendo Dart', 'assets/images/dart-icon.png', 2),
-        TaskCard('Aprendendo Git', 'assets/images/git-icon.png', 2),
-        TaskCard('Aprendendo Java', 'assets/images/java-icon.png', 4),
-        TaskCard('Aprendendo C#', 'assets/images/c-sharp-icon.png', 4),
-        TaskCard('Aprendendo Angular', 'assets/images/angular-icon.png', 3),
-        TaskCard('Aprendendo Php', 'assets/images/php-icon.png', 5),
-        TaskCard('Aprendendo Ruby', 'assets/images/ruby-icon.png', 3),
+        Column(children: TaskCardsInherited.of(context).taskCardsList),
         const SizedBox(
           height: 80,
         )
