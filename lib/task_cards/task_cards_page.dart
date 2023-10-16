@@ -16,7 +16,14 @@ class _TaskCardsPageState extends State<TaskCardsPage> {
     return Scaffold(
       appBar: _appBar(),
       body: _bodyWithOpacity(),
-      floatingActionButton: _floatingButton(),
+      floatingActionButton: Container(
+          padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 10.0),
+          child:
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            _floatingButtonOpacity(),
+            _floatingButtonOpacity(),
+          ])),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 
@@ -61,7 +68,7 @@ class _TaskCardsPageState extends State<TaskCardsPage> {
     );
   }
 
-  FloatingActionButton _floatingButton() {
+  FloatingActionButton _floatingButtonOpacity() {
     return FloatingActionButton(
         backgroundColor: const Color.fromARGB(255, 57, 29, 100),
         onPressed: () {
