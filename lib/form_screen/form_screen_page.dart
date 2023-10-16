@@ -8,7 +8,9 @@ class FormScreenPage extends StatefulWidget {
 }
 
 class _FormScreenPage extends State<FormScreenPage> {
-  bool shouldApplyOpacity = true;
+  TextEditingController nameController = TextEditingController();
+  TextEditingController difficultyController = TextEditingController();
+  TextEditingController imageController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +30,7 @@ class _FormScreenPage extends State<FormScreenPage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  controller: nameController,
                   textAlign: TextAlign.center,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
@@ -37,6 +40,33 @@ class _FormScreenPage extends State<FormScreenPage> {
                   ),
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextFormField(
+                  controller: difficultyController,
+                  textAlign: TextAlign.center,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Difficulty',
+                    fillColor: Colors.white70,
+                    filled: true,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextFormField(
+                  controller: imageController,
+                  textAlign: TextAlign.center,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Image',
+                    fillColor: Colors.white70,
+                    filled: true,
+                  ),
+                ),
+              ),
+              ElevatedButton(onPressed: () {}, child: const Text('Adicionar!'))
             ],
           ),
         ),
