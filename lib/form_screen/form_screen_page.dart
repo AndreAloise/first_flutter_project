@@ -25,7 +25,18 @@ class _FormScreenPage extends State<FormScreenPage> {
               border: Border.all(width: 3)),
           child: Column(
             children: [
-              TextFormField(),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextFormField(
+                  textAlign: TextAlign.center,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Nome',
+                    fillColor: Colors.white70,
+                    filled: true,
+                  ),
+                ),
+              ),
             ],
           ),
         ),
