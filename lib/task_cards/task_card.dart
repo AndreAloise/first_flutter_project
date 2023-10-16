@@ -1,7 +1,7 @@
-import 'package:first_flutter_project/task_cards/task_cards_difficulty.dart';
+import 'package:first_flutter_project/task_cards/task_card_difficulty.dart';
 import 'package:flutter/material.dart';
 
-class TaskCardsBody extends StatefulWidget {
+class TaskCard extends StatefulWidget {
   final String taskName;
   final String photoPath;
   final int difficulty;
@@ -10,14 +10,14 @@ class TaskCardsBody extends StatefulWidget {
   final int maxMasteryLevel = 7;
   final int progressBarMaxDivider = 10;
 
-  TaskCardsBody(this.taskName, this.photoPath, this.difficulty, {Key? key})
+  TaskCard(this.taskName, this.photoPath, this.difficulty, {Key? key})
       : super(key: key);
 
   @override
-  State<TaskCardsBody> createState() => _TaskCardsBodyState();
+  State<TaskCard> createState() => _TaskCardState();
 }
 
-class _TaskCardsBodyState extends State<TaskCardsBody> {
+class _TaskCardState extends State<TaskCard> {
   @override
   Widget build(BuildContext context) {
     return _bodyPadding();
@@ -117,7 +117,7 @@ class _TaskCardsBodyState extends State<TaskCardsBody> {
                   child: Text(widget.taskName,
                       style: const TextStyle(
                           fontSize: 24, overflow: TextOverflow.ellipsis))),
-              TaskCardsDifficulty(widget.difficulty),
+              TaskCardDifficulty(widget.difficulty),
             ],
           ),
           SizedBox(height: 60, width: 60, child: _levelUpTaskButton())

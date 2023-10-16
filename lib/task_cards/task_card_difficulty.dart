@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class TaskCardsDifficulty extends StatelessWidget {
+class TaskCardDifficulty extends StatelessWidget {
   final int difficultyLevel;
-  const TaskCardsDifficulty(this.difficultyLevel, {Key? key}) : super(key: key);
+  const TaskCardDifficulty(this.difficultyLevel, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
