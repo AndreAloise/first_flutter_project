@@ -23,7 +23,7 @@ class _TaskCardsPageState extends State<TaskCardsPage> {
             _floatingButtonOpacity(),
             _floatingButtonOpacity(),
           ])),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 
