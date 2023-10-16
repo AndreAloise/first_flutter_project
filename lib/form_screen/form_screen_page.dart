@@ -1,13 +1,16 @@
+import 'package:first_flutter_project/data/task_cards_inherited.dart';
 import 'package:flutter/material.dart';
 
 class FormScreenPage extends StatefulWidget {
-  const FormScreenPage({Key? key}) : super(key: key);
+  const FormScreenPage({Key? key, required this.taskContext}) : super(key: key);
+
+  final BuildContext taskContext;
 
   @override
-  State<FormScreenPage> createState() => _FormScreenPage();
+  State<FormScreenPage> createState() => _FormScreenPageState();
 }
 
-class _FormScreenPage extends State<FormScreenPage> {
+class _FormScreenPageState extends State<FormScreenPage> {
   TextEditingController nameController = TextEditingController();
   TextEditingController difficultyController = TextEditingController();
   TextEditingController imageController = TextEditingController();
@@ -34,11 +37,12 @@ class _FormScreenPage extends State<FormScreenPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  _taskNameField(),
-                  _taskDifficultField(),
-                  _taskImageField(),
-                  _taskIconPreview(),
-                  _addTaskButton(),
+                  _taskNameField(nameController),
+                  _taskDifficultyField(difficultyController),
+                  _taskImageField(imageController),
+                  _taskIconPreview(imageController),
+                  _addTaskButton(widget.taskContext, context, nameController,
+                      imageController, difficultyController),
                 ],
               ),
             ),
@@ -48,7 +52,7 @@ class _FormScreenPage extends State<FormScreenPage> {
     );
   }
 
-  Padding _taskNameField() {
+  Padding _taskNameField(TextEditingController nameController) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
@@ -71,7 +75,7 @@ class _FormScreenPage extends State<FormScreenPage> {
     );
   }
 
-  Padding _taskDifficultField() {
+  Padding _taskDifficultyField(TextEditingController difficultyController) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
@@ -94,7 +98,7 @@ class _FormScreenPage extends State<FormScreenPage> {
     );
   }
 
-  Padding _taskImageField() {
+  Padding _taskImageField(TextEditingController imageController) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
@@ -120,7 +124,7 @@ class _FormScreenPage extends State<FormScreenPage> {
     );
   }
 
-  Container _taskIconPreview() {
+  Container _taskIconPreview(TextEditingController imageController) {
     return Container(
       width: 72,
       height: 100,
@@ -143,14 +147,24 @@ class _FormScreenPage extends State<FormScreenPage> {
     );
   }
 
-  ElevatedButton _addTaskButton() {
+  ElevatedButton _addTaskButton(
+      BuildContext taskContext,
+      BuildContext context,
+      TextEditingController nameController,
+      TextEditingController imageController,
+      TextEditingController difficultyController) {
     return ElevatedButton(
         onPressed: () {
           if (_formKey.currentState!.validate()) {
+            TaskCardsInherited.insideOf(taskContext).addNewTask(
+                nameController.text,
+                imageController.text,
+                int.parse(difficultyController.text));
+
             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                 behavior: SnackBarBehavior.floating,
                 elevation: 150.0,
-                content: Text('Saving Task')));
+                content: Text('Creating new Task')));
             Navigator.pop(context);
           }
         },
