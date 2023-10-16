@@ -5,12 +5,8 @@ class TaskCard extends StatefulWidget {
   final String taskName;
   final String photoPath;
   final int difficulty;
-  int level = 0;
-  int masteryLevel = 0;
-  final int maxMasteryLevel = 7;
-  final int progressBarMaxDivider = 10;
 
-  TaskCard(this.taskName, this.photoPath, this.difficulty, {Key? key})
+  const TaskCard(this.taskName, this.photoPath, this.difficulty, {Key? key})
       : super(key: key);
 
   @override
@@ -18,6 +14,11 @@ class TaskCard extends StatefulWidget {
 }
 
 class _TaskCardState extends State<TaskCard> {
+  int level = 0;
+  int masteryLevel = 0;
+  final int maxMasteryLevel = 7;
+  final int progressBarMaxDivider = 10;
+
   @override
   Widget build(BuildContext context) {
     return _bodyPadding();
@@ -40,7 +41,7 @@ class _TaskCardState extends State<TaskCard> {
           height: 140,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4),
-              color: _setProgressBarColorByMastery(widget.masteryLevel)),
+              color: _setProgressBarColorByMastery(masteryLevel)),
         ),
         Column(
           children: [
@@ -135,8 +136,7 @@ class _TaskCardState extends State<TaskCard> {
           child: LinearProgressIndicator(
             color: Colors.white,
             value: (widget.difficulty > 0)
-                ? (widget.level / widget.difficulty) /
-                    widget.progressBarMaxDivider
+                ? (level / widget.difficulty) / progressBarMaxDivider
                 : 1,
           ),
         ),
@@ -144,7 +144,7 @@ class _TaskCardState extends State<TaskCard> {
       Padding(
         padding: const EdgeInsets.all(8.0),
         child: Text(
-          'Level: ${widget.level}',
+          'Level: $level',
           style: const TextStyle(color: Colors.white, fontSize: 16),
         ),
       ),
@@ -155,7 +155,7 @@ class _TaskCardState extends State<TaskCard> {
     return ElevatedButton(
       onPressed: () {
         setState(() {
-          widget.level++;
+          level++;
         });
 
         _setMasteryLevel();
@@ -175,12 +175,12 @@ class _TaskCardState extends State<TaskCard> {
   }
 
   void _setMasteryLevel() {
-    double progressBar = (widget.level / widget.difficulty);
-    double progressBarLevel = progressBar / widget.progressBarMaxDivider;
-    if (progressBarLevel == 1 && widget.masteryLevel < widget.maxMasteryLevel) {
+    double progressBar = (level / widget.difficulty);
+    double progressBarLevel = progressBar / progressBarMaxDivider;
+    if (progressBarLevel == 1 && masteryLevel < maxMasteryLevel) {
       setState(() {
-        widget.masteryLevel++;
-        widget.level = 0;
+        masteryLevel++;
+        level = 0;
       });
     }
   }
