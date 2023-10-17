@@ -171,6 +171,7 @@ class _TaskCardState extends State<TaskCard> {
         });
 
         _setMasteryLevel();
+        TaskCardDao().saveOrUpdate(widget);
       },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
