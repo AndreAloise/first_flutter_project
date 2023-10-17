@@ -64,7 +64,7 @@ class TaskCardDao {
 
     final Database dataBase = await getDatabase();
     final List<Map<String, dynamic>> result = await dataBase.query(_tableName);
-    debugPrint('Found the following data form Database: $result');
+    debugPrint('Found the following data from Database: $result');
 
     List<TaskCard> list = _toList(result);
     debugPrint('END - TaskCardDao.findAll');
