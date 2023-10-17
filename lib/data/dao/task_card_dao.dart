@@ -104,6 +104,7 @@ class TaskCardDao {
     debugPrint('INIT - TaskCardDao.deleteTasksByName');
 
     final Database dataBase = await getDatabase();
+    debugPrint('Deleting Task: $taskName');
     dataBase.delete(_tableName, where: '$_name = ?', whereArgs: [taskName]);
 
     debugPrint('END - TaskCardDao.deleteTasksByName');
