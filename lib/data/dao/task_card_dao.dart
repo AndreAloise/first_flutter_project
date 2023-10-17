@@ -125,4 +125,26 @@ class TaskCardDao {
 
     debugPrint('END - TaskCardDao.deleteTasksByName');
   }
+
+  Future<int> getLevelByTaskName(String taskName) async {
+    debugPrint('INIT - TaskCardDao.getLevelByTaskName');
+
+    List<TaskCard> list = await findTasksByName(taskName);
+    int level = list[0].level;
+
+    debugPrint('END - TaskCardDao.getLevelByTaskName');
+
+    return level;
+  }
+
+  Future<int> getMasteryByTaskName(String taskName) async {
+    debugPrint('INIT - TaskCardDao.getLevelByTaskName');
+
+    List<TaskCard> list = await findTasksByName(taskName);
+    int mastery = list[0].masteryLevel;
+
+    debugPrint('END - TaskCardDao.getLevelByTaskName');
+
+    return mastery;
+  }
 }
