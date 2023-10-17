@@ -30,6 +30,13 @@ class _TaskCardsPageState extends State<TaskCardsPage> {
         'https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large',
         fit: BoxFit.cover,
       ),
+      actions: [
+        IconButton(
+            onPressed: () {
+              setState(() {});
+            },
+            icon: const Icon(Icons.refresh_rounded))
+      ],
       title: const Text('Tarefas'),
     );
   }
