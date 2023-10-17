@@ -54,7 +54,7 @@ class _TaskCardsPageState extends State<TaskCardsPage> {
 
   Padding _cardListFromDb() {
     return Padding(
-      padding: const EdgeInsets.only(top: 8, bottom: 70),
+      padding: const EdgeInsets.only(top: 8, bottom: 75),
       child: FutureBuilder<List<TaskCard>>(
         future: TaskCardDao().findAll(),
         builder: (context, snapshot) {
