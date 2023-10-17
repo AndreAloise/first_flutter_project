@@ -144,9 +144,11 @@ class _TaskCardsPageState extends State<TaskCardsPage> {
       backgroundColor: Colors.blue,
       onPressed: () {
         Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (contextNew) => FormScreenPage(taskContext: context)));
+                context,
+                MaterialPageRoute(
+                    builder: (contextNew) =>
+                        FormScreenPage(taskContext: context)))
+            .then((value) => setState(() {}));
       },
       child: const Icon(Icons.add),
     );
