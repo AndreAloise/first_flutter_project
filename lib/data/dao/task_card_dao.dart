@@ -5,12 +5,26 @@ import 'package:sqflite/sqflite.dart';
 
 class TaskCardDao {
   static const String tableSql =
-      'CREATE TABLE $_tableName($_name TEXT, $_difficulty INTEGER, $_image TEXT)';
+      'CREATE TABLE $_tableName($_name TEXT, $_difficulty INTEGER, $_image TEXT, $_level INTEGER, $_mastery INTEGER)';
 
   static const String _tableName = 'taskTable';
   static const String _name = 'name';
   static const String _difficulty = 'difficulty';
   static const String _image = 'image';
+  static const String _level = 'level';
+  static const String _mastery = 'mastery_level';
+
+  /* alterTableAddColumnLevel() async {
+    final Database dataBase = await getDatabase();
+    await dataBase.execute("ALTER TABLE $_tableName ADD "
+        "COLUMN $_level INTEGER;");
+  }
+
+  alterTableAddColumnMastery() async {
+    final Database dataBase = await getDatabase();
+    await dataBase.execute("ALTER TABLE $_tableName ADD "
+        "COLUMN $_mastery INTEGER;");
+  } */
 
   ///If doesn't save or update, try to change code to return those methods instead of just invoking
   saveOrUpdate(TaskCard taskCard) async {
@@ -50,10 +64,12 @@ class TaskCardDao {
   Map<String, dynamic> _toMap(TaskCard taskCard) {
     debugPrint('Converting TaskCard into Map');
 
-    final Map<String, dynamic> taskMap = Map();
+    final Map<String, dynamic> taskMap = {};
     taskMap[_name] = taskCard.taskName;
     taskMap[_image] = taskCard.photoPath;
     taskMap[_difficulty] = taskCard.difficulty;
+    taskMap[_level] = taskCard.level;
+    taskMap[_mastery] = taskCard.masteryLevel;
 
     debugPrint('Converted Map: $taskMap');
     return taskMap;
