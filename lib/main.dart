@@ -1,4 +1,3 @@
-import 'package:first_flutter_project/data/task_cards_inherited.dart';
 import 'package:first_flutter_project/task_cards/task_cards_page.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: TaskCardsInherited(child: const TaskCardsPage()),
+      home: const TaskCardsPage(),
     );
   }
 }
