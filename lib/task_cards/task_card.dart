@@ -163,7 +163,12 @@ class _TaskCardState extends State<TaskCard> {
   ElevatedButton _levelUpTaskButton() {
     return ElevatedButton(
       onLongPress: () {
-        TaskCardDao().deleteTasksByName(widget.taskName);
+        showDialog(
+          context: context,
+          builder: (_) => _confirmTaskDeleteDialog(),
+          barrierDismissible: true,
+        );
+        //TaskCardDao().deleteTasksByName(widget.taskName);
       },
       onPressed: () {
         setState(() {
@@ -173,10 +178,10 @@ class _TaskCardState extends State<TaskCard> {
         _setMasteryLevel();
         TaskCardDao().saveOrUpdate(widget);
       },
-      child: Column(
+      child: const Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.end,
-        children: const [
+        children: [
           Icon(Icons.arrow_drop_up),
           Text(
             "Lvl Up",
@@ -200,5 +205,30 @@ class _TaskCardState extends State<TaskCard> {
 
   bool _isPhotoPathNetwork(String photoPath) {
     return photoPath.contains('http');
+  }
+
+  AlertDialog _confirmTaskDeleteDialog() {
+    return AlertDialog(
+      title: const Text('Confirmation'),
+      content: const Text('Confirm the excluion?'),
+      actions: [
+        TextButton(
+            onPressed: () {
+              TaskCardDao().deleteTasksByName(widget.taskName);
+
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                content: Text('The task was deleted!'),
+                backgroundColor: Colors.redAccent,
+              ));
+              Navigator.pop(context, 'OK');
+            },
+            child: const Text('OK')),
+        TextButton(
+            onPressed: () {
+              Navigator.pop(context, 'Cancel');
+            },
+            child: const Text('Cancel'))
+      ],
+    );
   }
 }
