@@ -158,10 +158,10 @@ class _FormScreenPageState extends State<FormScreenPage> {
             /* _addStaticTask(taskContext, nameController, imageController,
                 difficultyController); */
 
-            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                 behavior: SnackBarBehavior.floating,
                 elevation: 150.0,
-                content: Text('Creating new Task')));
+                content: Text('Creating new Task ${nameController.text}')));
             Navigator.pop(context);
           }
         },

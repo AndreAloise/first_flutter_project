@@ -212,14 +212,14 @@ class _TaskCardState extends State<TaskCard> {
   AlertDialog _confirmTaskDeleteDialog() {
     return AlertDialog(
       title: const Text('Confirmation'),
-      content: const Text('Confirm the excluion?'),
+      content: Text('Confirm the exclusion of ${widget.taskName}?'),
       actions: [
         TextButton(
             onPressed: () {
               TaskCardDao().deleteTasksByName(widget.taskName);
 
-              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                content: Text('The task was deleted!'),
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text('The task ${widget.taskName} was deleted!'),
                 backgroundColor: Colors.redAccent,
               ));
               Navigator.pop(context, 'OK');
