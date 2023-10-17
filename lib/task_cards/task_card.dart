@@ -1,3 +1,4 @@
+import 'package:first_flutter_project/data/dao/task_card_dao.dart';
 import 'package:first_flutter_project/task_cards/task_card_difficulty.dart';
 import 'package:flutter/material.dart';
 
@@ -161,6 +162,9 @@ class _TaskCardState extends State<TaskCard> {
 
   ElevatedButton _levelUpTaskButton() {
     return ElevatedButton(
+      onLongPress: () {
+        TaskCardDao().deleteTasksByName(widget.taskName);
+      },
       onPressed: () {
         setState(() {
           widget.level++;
