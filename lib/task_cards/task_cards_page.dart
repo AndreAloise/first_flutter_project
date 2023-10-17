@@ -96,7 +96,7 @@ class _TaskCardsPageState extends State<TaskCardsPage> {
                           size: 128,
                         ),
                         Text(
-                          'There is no Task',
+                          'There are no Tasks',
                           style: TextStyle(fontSize: 32),
                         )
                       ],
