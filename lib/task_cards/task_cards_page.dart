@@ -1,5 +1,7 @@
+import 'package:first_flutter_project/data/dao/task_card_dao.dart';
 import 'package:first_flutter_project/data/task_cards_inherited.dart';
 import 'package:first_flutter_project/form_screen/form_screen_page.dart';
+import 'package:first_flutter_project/task_cards/task_card.dart';
 import 'package:flutter/material.dart';
 
 class TaskCardsPage extends StatefulWidget {
@@ -38,10 +40,77 @@ class _TaskCardsPageState extends State<TaskCardsPage> {
       duration: const Duration(
         seconds: 3,
       ),
-      child: ListView(
-          padding: const EdgeInsets.only(top: 8, bottom: 70),
-          children: TaskCardsInherited.insideOf(context).taskCardsList),
+      child: _cardListFromDb(),
+      //child: _staticCardList(context),
     );
+  }
+
+  Padding _cardListFromDb() {
+    return Padding(
+      padding: const EdgeInsets.only(top: 8, bottom: 70),
+      child: FutureBuilder<List<TaskCard>>(
+        future: TaskCardDao().findAll(),
+        builder: (context, snapshot) {
+          List<TaskCard>? cards = snapshot.data;
+          switch (snapshot.connectionState) {
+            case ConnectionState.none:
+              return const Center(
+                child: Column(
+                  children: [CircularProgressIndicator(), Text('Loading')],
+                ),
+              );
+            case ConnectionState.waiting:
+              return const Center(
+                child: Column(
+                  children: [CircularProgressIndicator(), Text('Loading')],
+                ),
+              );
+            case ConnectionState.active:
+              return const Center(
+                child: Column(
+                  children: [CircularProgressIndicator(), Text('Loading')],
+                ),
+              );
+            case ConnectionState.done:
+              if (snapshot.hasData && cards != null) {
+                if (cards.isNotEmpty) {
+                  return ListView.builder(
+                      itemCount: cards.length,
+                      itemBuilder: (BuildContext newContext, int index) {
+                        final TaskCard task = cards[index];
+                        return task;
+                      });
+                } else {
+                  return const Center(
+                    child: Column(
+                      children: [
+                        Icon(
+                          Icons.error_outline,
+                          size: 128,
+                        ),
+                        Text(
+                          'There is no Task',
+                          style: TextStyle(fontSize: 32),
+                        )
+                      ],
+                    ),
+                  );
+                }
+              } else {
+                return const Text('Error in loading Tasks');
+              }
+            default:
+              return const Text('Unkwon Error!');
+          }
+        },
+      ),
+    );
+  }
+
+  ListView _staticCardList(BuildContext context) {
+    return ListView(
+        padding: const EdgeInsets.only(top: 8, bottom: 70),
+        children: TaskCardsInherited.insideOf(context).taskCardsList);
   }
 
   Container _floatingButtonList(BuildContext context) {
