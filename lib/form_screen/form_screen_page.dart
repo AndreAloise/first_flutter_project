@@ -153,7 +153,7 @@ class _FormScreenPageState extends State<FormScreenPage> {
         onPressed: () {
           if (_formKey.currentState!.validate()) {
             TaskCard task = TaskCard(nameController.text, imageController.text,
-                int.parse(difficultyController.text));
+                int.parse(difficultyController.text), 0, 0);
             TaskCardDao().saveOrUpdate(task);
             /* _addStaticTask(taskContext, nameController, imageController,
                 difficultyController); */

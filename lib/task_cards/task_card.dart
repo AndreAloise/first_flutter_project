@@ -12,7 +12,9 @@ class TaskCard extends StatefulWidget {
   final int maxMasteryLevel = 7;
   final int progressBarMaxDivider = 10;
 
-  TaskCard(this.taskName, this.photoPath, this.difficulty, {Key? key})
+  TaskCard(this.taskName, this.photoPath, this.difficulty, this.level,
+      this.masteryLevel,
+      {Key? key})
       : super(key: key);
 
   @override

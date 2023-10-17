@@ -92,8 +92,8 @@ class TaskCardDao {
     final List<TaskCard> tasks = [];
 
     for (Map<String, dynamic> mappedTask in mappedTaskList) {
-      final TaskCard taskCard = TaskCard(
-          mappedTask[_name], mappedTask[_image], mappedTask[_difficulty]);
+      final TaskCard taskCard = TaskCard(mappedTask[_name], mappedTask[_image],
+          mappedTask[_difficulty], mappedTask[_level], mappedTask[_mastery]);
       tasks.add(taskCard);
     }
 
