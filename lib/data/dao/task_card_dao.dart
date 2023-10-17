@@ -99,5 +99,13 @@ class TaskCardDao {
     return list;
   }
 
-  deleteTasksByName(String taskName) async {}
+  ///If doesn't delete, try to return instead of just invoking the database.delete
+  deleteTasksByName(String taskName) async {
+    debugPrint('INIT - TaskCardDao.deleteTasksByName');
+
+    final Database dataBase = await getDatabase();
+    dataBase.delete(_tableName, where: '$_name = ?', whereArgs: [taskName]);
+
+    debugPrint('END - TaskCardDao.deleteTasksByName');
+  }
 }
