@@ -57,10 +57,8 @@ class _FormScreenPageState extends State<FormScreenPage> {
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
         validator: (String? value) {
-          if (value != null && value.isEmpty) {
-            return 'Enter the Task\'s name';
-          }
-          return null;
+          bool isValid = _valueValidate(value);
+          return isValid ? null : 'Enter the Task\'s name';
         },
         keyboardType: TextInputType.name,
         controller: nameController,
@@ -80,10 +78,8 @@ class _FormScreenPageState extends State<FormScreenPage> {
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
         validator: (value) {
-          if (value!.isEmpty || int.parse(value) > 5 || int.parse(value) < 1) {
-            return 'Enter a difficult value between 1 and 5.';
-          }
-          return null;
+          bool isValid = _difificultyValidator(value);
+          return isValid ? null : 'Enter a difficult value between 1 and 5.';
         },
         keyboardType: TextInputType.number,
         controller: difficultyController,
@@ -103,10 +99,8 @@ class _FormScreenPageState extends State<FormScreenPage> {
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
         validator: (value) {
-          if (value!.isEmpty) {
-            return 'Enter the url of an image';
-          }
-          return null;
+          bool isValid = _valueValidate(value);
+          return isValid ? null : 'Enter the url of an image';
         },
         keyboardType: TextInputType.url,
         onChanged: (text) {
@@ -169,5 +163,26 @@ class _FormScreenPageState extends State<FormScreenPage> {
           }
         },
         child: const Text('Add!'));
+  }
+
+  bool _valueValidate(String? value) {
+    return (value != null && value.trim().isNotEmpty);
+  }
+
+  bool _difificultyValidator(String? value) {
+    bool hasValue = _valueValidate(value);
+    if (hasValue) {
+      try {
+        int intValue = int.parse(value!);
+        if (intValue <= 5 && intValue >= 1) {
+          return true;
+        }
+      } catch (e) {
+        debugPrint("Error on converting '$value' into Int!");
+        debugPrint("Error Message: $e");
+        return false;
+      }
+    }
+    return false;
   }
 }
