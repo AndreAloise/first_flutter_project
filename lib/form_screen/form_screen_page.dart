@@ -1,4 +1,6 @@
+import 'package:first_flutter_project/data/dao/task_card_dao.dart';
 import 'package:first_flutter_project/data/task_cards_inherited.dart';
+import 'package:first_flutter_project/task_cards/task_card.dart';
 import 'package:flutter/material.dart';
 
 class FormScreenPage extends StatefulWidget {
@@ -150,10 +152,11 @@ class _FormScreenPageState extends State<FormScreenPage> {
     return ElevatedButton(
         onPressed: () {
           if (_formKey.currentState!.validate()) {
-            TaskCardsInherited.insideOf(taskContext).addNewTask(
-                nameController.text,
-                imageController.text,
+            TaskCard task = TaskCard(nameController.text, imageController.text,
                 int.parse(difficultyController.text));
+            TaskCardDao().saveOrUpdate(task);
+            /* _addStaticTask(taskContext, nameController, imageController,
+                difficultyController); */
 
             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                 behavior: SnackBarBehavior.floating,
@@ -163,6 +166,15 @@ class _FormScreenPageState extends State<FormScreenPage> {
           }
         },
         child: const Text('Add!'));
+  }
+
+  void _addStaticTask(
+      BuildContext taskContext,
+      TextEditingController nameController,
+      TextEditingController imageController,
+      TextEditingController difficultyController) {
+    TaskCardsInherited.insideOf(taskContext).addNewTask(nameController.text,
+        imageController.text, int.parse(difficultyController.text));
   }
 
   bool _valueValidate(String? value) {
