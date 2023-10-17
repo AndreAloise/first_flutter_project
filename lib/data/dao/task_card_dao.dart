@@ -41,7 +41,17 @@ class TaskCardDao {
   }
 
   Future<List<TaskCard>> findTasksByName(String taskName) async {
-    return [TaskCard('teste', 'photoPath', 0)];
+    debugPrint('INIT - TaskCardDao.findTasksByName');
+
+    final Database dataBase = await getDatabase();
+    final List<Map<String, dynamic>> result = await dataBase
+        .query(_tableName, where: '$_name = ?', whereArgs: [taskName]);
+
+    List<TaskCard> list = _toList(result);
+    debugPrint('Found the following data form Database: $result');
+
+    debugPrint('END - TaskCardDao.findTasksByName');
+    return list;
   }
 
   deleteTasksByName(String taskName) async {}
