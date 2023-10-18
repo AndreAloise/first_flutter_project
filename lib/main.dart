@@ -1,4 +1,4 @@
-import 'package:first_flutter_project/task_cards/task_cards_page.dart';
+import 'package:first_flutter_project/login/login_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,10 +12,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      theme: ThemeData.from(
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color.fromRGBO(32, 63, 129, 1.0)),
       ),
-      home: const TaskCardsPage(),
+      home: const LoginPage(),
     );
   }
 }
