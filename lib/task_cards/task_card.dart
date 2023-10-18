@@ -145,6 +145,7 @@ class _TaskCardState extends State<TaskCard> {
           width: 200,
           child: LinearProgressIndicator(
             color: Colors.white,
+            backgroundColor: Colors.grey,
             value: (widget.difficulty > 0)
                 ? (widget.level / widget.difficulty) /
                     widget.progressBarMaxDivider
