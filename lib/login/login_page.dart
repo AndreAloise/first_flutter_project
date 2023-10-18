@@ -43,62 +43,11 @@ class _LoginPageState extends State<LoginPage> {
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
               const SizedBox(height: 60),
-              TextFormField(
-                  controller: _usernameController,
-                  keyboardType: TextInputType.name,
-                  decoration: InputDecoration(
-                    labelText: 'Username',
-                    prefixIcon: const Icon(Icons.person_outlined),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                  ),
-                  onEditingComplete: () => _focusNodePassword.requestFocus(),
-                  validator: (String? value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return 'Enter a valid username';
-                    }
-                    //TODO: Adicionar lógica de validação com o dado na base de dados
-                    else {
-                      return null;
-                    }
-                  }),
+              _usernameField(),
               const SizedBox(
                 height: 10,
               ),
-              TextFormField(
-                controller: _passwordController,
-                focusNode: _focusNodePassword,
-                obscureText: _hidePassword,
-                keyboardType: TextInputType.visiblePassword,
-                decoration: InputDecoration(
-                  labelText: "Password",
-                  prefixIcon: const Icon(Icons.password_outlined),
-                  suffixIcon: IconButton(
-                      onPressed: () {
-                        setState(() {
-                          _hidePassword = !_hidePassword;
-                        });
-                      },
-                      icon: _hidePassword
-                          ? const Icon(Icons.visibility_outlined)
-                          : const Icon(Icons.visibility_off_outlined)),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                  enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                ),
-                validator: (String? value) {
-                  if (value == null || value.trim().isEmpty) {
-                    return 'Enter the password';
-                  }
-                  //TODO: Adicionar lógica de validação com o dado na base de dados
-                  else {
-                    return null;
-                  }
-                },
-              ),
+              _passwordField(),
               const SizedBox(height: 60),
               Column(
                 children: [
@@ -110,6 +59,63 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       ),
+    );
+  }
+
+  TextFormField _usernameField() {
+    return TextFormField(
+        controller: _usernameController,
+        keyboardType: TextInputType.name,
+        decoration: InputDecoration(
+          labelText: 'Username',
+          prefixIcon: const Icon(Icons.person_outlined),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+          enabledBorder:
+              OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+        ),
+        onEditingComplete: () => _focusNodePassword.requestFocus(),
+        validator: (String? value) {
+          if (value == null || value.trim().isEmpty) {
+            return 'Enter a valid username';
+          }
+          //TODO: Adicionar lógica de validação com o dado na base de dados
+          else {
+            return null;
+          }
+        });
+  }
+
+  TextFormField _passwordField() {
+    return TextFormField(
+      controller: _passwordController,
+      focusNode: _focusNodePassword,
+      obscureText: _hidePassword,
+      keyboardType: TextInputType.visiblePassword,
+      decoration: InputDecoration(
+        labelText: "Password",
+        prefixIcon: const Icon(Icons.password_outlined),
+        suffixIcon: IconButton(
+            onPressed: () {
+              setState(() {
+                _hidePassword = !_hidePassword;
+              });
+            },
+            icon: _hidePassword
+                ? const Icon(Icons.visibility_outlined)
+                : const Icon(Icons.visibility_off_outlined)),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+        enabledBorder:
+            OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+      ),
+      validator: (String? value) {
+        if (value == null || value.trim().isEmpty) {
+          return 'Enter the password';
+        }
+        //TODO: Adicionar lógica de validação com o dado na base de dados
+        else {
+          return null;
+        }
+      },
     );
   }
 
