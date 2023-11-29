@@ -168,6 +168,7 @@ class _TaskCardState extends State<TaskCard> {
       onLongPress: () {
         showDialog(
           context: context,
+          //builder: (_) => _dialogWithImageButtonAndCloseOption(),
           builder: (_) => _confirmTaskDeleteDialog(),
           barrierDismissible: true,
         );
@@ -232,6 +233,56 @@ class _TaskCardState extends State<TaskCard> {
             },
             child: const Text('Cancel'))
       ],
+    );
+  }
+
+  AlertDialog _dialogWithImageButtonAndCloseOption() {
+    return AlertDialog(
+      backgroundColor: Colors.white,
+      contentPadding: const EdgeInsets.all(10),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              Image.network(
+                'https://t3.ftcdn.net/jpg/00/86/56/12/360_F_86561234_8HJdzg2iBlPap18K38mbyetKfdw1oNrm.jpg',
+                fit: BoxFit.cover,
+              ),
+              ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.black,
+                      side:
+                          const BorderSide(color: Colors.transparent, width: 2),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0))),
+                  child: const SizedBox(
+                      width: 140,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("CLIQUE AQUI"),
+                          Padding(
+                            padding: EdgeInsets.only(left: 10),
+                            child: Icon(Icons.lock_open,
+                                color: Colors.white, size: 18),
+                          )
+                        ],
+                      ))),
+              Positioned(
+                top: 0,
+                right: 0,
+                child: IconButton(
+                  icon: const Icon(Icons.close, color: Colors.white),
+                  onPressed: () {},
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

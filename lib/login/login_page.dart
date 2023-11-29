@@ -1,4 +1,5 @@
 import 'package:first_flutter_project/login/register_page.dart';
+import 'package:first_flutter_project/login/register_page_2.dart';
 import 'package:first_flutter_project/task_cards/task_cards_page.dart';
 import 'package:flutter/material.dart';
 
@@ -157,7 +158,8 @@ class _LoginPageState extends State<LoginPage> {
               context,
               MaterialPageRoute(
                 builder: (newContext) {
-                  return const RegisterPage();
+                  //return const RegisterPage();
+                  return const RegisterPage2(title: "Title");
                 },
               ),
             );

@@ -133,9 +133,9 @@ class _PageWithBlurExamplesState extends State<PageWithBlurExamples> {
           ),
         ),
         ImageFiltered(
-            imageFilter: isIconBlurEnabled
-                ? ImageFilter.dilate(radiusX: 4, radiusY: 4)
-                : ImageFilter.dilate(radiusX: 0, radiusY: 0),
+            imageFilter: //isIconBlurEnabled
+                /*?*/ ImageFilter.blur(sigmaX: 5, sigmaY: 2),
+            //: ImageFilter.dilate(radiusX: 0, radiusY: 0),
             child: IconButton(
               color: Colors.pink,
               onPressed: () {
@@ -169,7 +169,7 @@ class _PageWithBlurExamplesState extends State<PageWithBlurExamples> {
         foreground: Paint()
           ..style = PaintingStyle.fill
           ..color = Colors.amber
-          ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 1.6));
+          ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 3));
   }
 
   Row _mostLowestBottomSection() {
@@ -193,6 +193,7 @@ class _PageWithBlurExamplesState extends State<PageWithBlurExamples> {
           ),
         ),
         IconButton(
+          splashRadius: 20,
           onPressed: () {
             setState(() {
               isTextBlurEnabled = !isTextBlurEnabled;

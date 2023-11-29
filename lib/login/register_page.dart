@@ -88,15 +88,19 @@ class _RegisterPageState extends State<RegisterPage> {
               OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
         ),
         onEditingComplete: () => _focusNodeEmail.requestFocus(),
-        validator: (String? value) {
-          if (value == null || value.trim().isEmpty) {
-            return 'Enter a valid username';
-          }
-          //TODO: Adicionar lógica de validação com o dado na base de dados
-          else {
-            return null;
-          }
-        });
+        validator: newMethod222);
+  }
+
+  String? newMethod222(value) => blablablabaw2(value, _hidePassword);
+
+  String? blablablabaw2(String? value, bool isValid) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Enter a valid username';
+    }
+    //TODO: Adicionar lógica de validação com o dado na base de dados
+    else {
+      return null;
+    }
   }
 
   TextFormField _emailField() {
